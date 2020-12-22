@@ -1,3 +1,5 @@
+import nltk
+
 alphabet='abcdefghijklmnopqrstuvwxyz'
 def encrypt(sentence,num):
     words=sentence.split()
@@ -13,10 +15,40 @@ def encrypt(sentence,num):
 def decrypt(encrypted,key):
     return encrypt(encrypted,-key)
 
+def count_valid_english_words(sentence):
+    """
+    returns number of valid English words in the sentence
+    >>> count_valid_english_words('hi fgrt bread ujhgfvsgdvhsdhj jkhyjuhg')
+    2
+    >>> count_valid_english_words('hi from classs')
+    3
+    """
+    nltk.download('words')
+
+    english_words = nltk.corpus.words.words()
+
+    words = sentence.split()
+    counter = 0
+
+    for word in words:
+        if word in english_words or word.lower() in english_words or word.upper() in english_words:
+            counter += 1
+    return counter
+
 def hack(encrypted):
-    pass
+    counter=[]
+    maximum=0
+    for i in range(0,26):
+        sentence= decrypt(encrypted,i)
+        counter.append(count_valid_english_words(sentence))
+        if count_valid_english_words(sentence)>maximum:
+            maximum=count_valid_english_words(sentence)
+    key=counter.index(maximum)
+    return key
+    
+
+
 
 if __name__ == "__main__":
-    print(encrypt('i am happy',3))
-    print(decrypt('l dp kdssb',3))
+    print(hack(encrypt('hello what is your name we are',3)))
 
