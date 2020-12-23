@@ -44,7 +44,8 @@ def hack(encrypted):
         if count_valid_english_words(sentence)>maximum:
             maximum=count_valid_english_words(sentence)
     key=counter.index(maximum)
-    return key
+    decrypted=decrypt(encrypted,key)
+    return decrypted
     
 
 
