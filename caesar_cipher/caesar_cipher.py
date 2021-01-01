@@ -51,5 +51,4 @@ def hack(encrypted):
 
 
 if __name__ == "__main__":
-    print(hack(encrypt('hello what is your name we are',3)))
-
+    pass    
