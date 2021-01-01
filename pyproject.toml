@@ -8,6 +8,8 @@ authors = ["sondos-braim <sondos9811@gmail.com>"]
 python = "^3.9"
 spacy = "^2.3.5"
 nltk = "^3.5"
+tk = "^0.1.0"
+beautifulsoup4 = "^4.9.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
